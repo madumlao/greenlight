@@ -20,6 +20,7 @@ class RoomsController < ApplicationController
   include RecordingsHelper
   include Pagy::Backend
 
+  before_action :require_login!
   before_action :validate_accepted_terms, unless: -> { !Rails.configuration.terms }
   before_action :validate_verified_email, except: [:show, :join],
                 unless: -> { !Rails.configuration.enable_email_verification }

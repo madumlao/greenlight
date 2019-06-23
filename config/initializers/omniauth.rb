@@ -28,6 +28,7 @@ SETUP_PROC = lambda do |env|
 end
 
 # Setup the Omniauth middleware.
+Rails.application.config.autologin = ENV['AUTOLOGIN']
 Rails.application.config.middleware.use OmniAuth::Builder do
   if Rails.configuration.omniauth_bn_launcher
     provider :bn_launcher, client_id: ENV['CLIENT_ID'],

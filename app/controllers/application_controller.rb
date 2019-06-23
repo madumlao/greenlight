@@ -151,6 +151,13 @@ class ApplicationController < ActionController::Base
   end
   helper_method :check_user_role
 
+  # automatically login to omniauth
+  def require_login!
+    if !current_user && Rails.configuration.autologin
+      redirect_to omniauth_login_url(Rails.configuration.providers.first)
+    end
+  end
+
   # Manually Handle BigBlueButton errors
   def handle_bigbluebutton_error
     render "errors/bigbluebutton_error"

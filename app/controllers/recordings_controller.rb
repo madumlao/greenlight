@@ -17,6 +17,7 @@
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>
 
 class RecordingsController < ApplicationController
+  before_action :require_login!
   before_action :find_room
   before_action :verify_room_ownership
 

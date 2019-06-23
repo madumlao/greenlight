@@ -26,6 +26,7 @@ class AdminsController < ApplicationController
                    :registration_method, :room_authentication]
 
   authorize_resource class: false
+  before_action :require_login!
   before_action :find_user, only: manage_users
   before_action :verify_admin_of_user, only: manage_users
   before_action :find_setting, only: site_settings

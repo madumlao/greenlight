@@ -17,6 +17,7 @@
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 
 class ThemesController < ApplicationController
+  before_action :require_login!
   before_action :provider_settings
 
   # GET /primary
